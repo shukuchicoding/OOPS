@@ -30,6 +30,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 	
 	private int gameState = START_GAME_STATE;
 	
+	private BufferedImage startImage;
 	private BufferedImage replayButtonImage;
 	private BufferedImage gameOverButtonImage;
 	private BufferedImage gameStartButtonImage;
@@ -37,15 +38,21 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 	private Rectangle bounds;
 
 	public GameScreen() {
+		
+		
+
 		mainCharacter = new MainCharacter();
 		//land = new Land(GameWindow.SCREEN_WIDTH, mainCharacter);
 		mainCharacter.setSpeedX(4);
+
 		replayButtonImage = Resource.getResourceImage("data/replay_button.png");
 		gameOverButtonImage = Resource.getResourceImage("data/gameover_text.png");
 		gameStartButtonImage = Resource.getResourceImage("data/gamestart_text.png");
 		bgGameImage = Resource.getResourceImage("data/bg1.png");
 		enemyManager = new EnemyManager(mainCharacter);
-		clouds = new Cloud(GameWindow.SCREEN_WIDTH, mainCharacter);
+		clouds = new Cloud(GameWindow.SCREEN_WIDTH, mainCharacter);	
+		
+		
 	}
 	
 	public void startGame() {
@@ -86,7 +93,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				enemyManager.draw(g);
 				mainCharacter.draw(g);
 				g.setColor(Color.BLACK);
-				g.drawString("SCORE: " + mainCharacter.score, 700, 20);
+				g.drawString("SCORE: " + mainCharacter.score, 680, 20);
 				if(gameState == GAME_OVER_STATE) {
 					g.drawImage(gameOverButtonImage, 300, 30, null);
 					g.drawImage(replayButtonImage, 383, 70, null);

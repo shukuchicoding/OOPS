@@ -13,13 +13,14 @@ import util.Animation;
 import util.Resource;
 
 public class MainCharacter {
-	public static final int LAND_POSY = 130;
+	public static final int LAND_POSY = 120; // updated tu 130 -> 120
 	public static final float GRAVITY = 0.4f;
 	
 	private static final int NORMAL_RUN = 0;
 	private static final int JUMPING = 1;
 	private static final int DOWN_RUN = 2;
 	private static final int DEATH = 3;
+	private static final int START = 4; // update them trang thai start
 	
 	private float posX;
 	private float posY;
@@ -29,8 +30,9 @@ public class MainCharacter {
 	
 	public int score = 0;
 	
-	private int state = NORMAL_RUN;
+	private int state = START;
 	
+	private BufferedImage startImage;
 	private Animation normalRunAnim;
 	private BufferedImage jumping;
 	private Animation downRunAnim;
@@ -44,14 +46,15 @@ public class MainCharacter {
 		posX = 50;
 		posY = LAND_POSY;
 		rectBound = new Rectangle();
+		startImage = Resource.getResourceImage("data/start_character.png");
 		normalRunAnim = new Animation(90);
-		normalRunAnim.addFrame(Resource.getResourceImage("data/main-character1.png"));
-		normalRunAnim.addFrame(Resource.getResourceImage("data/main-character2.png"));
-		jumping = Resource.getResourceImage("data/main-character3.png");
+		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_1.png"));
+		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_2.png"));
+		jumping = Resource.getResourceImage("data/jumping.png");
 		downRunAnim = new Animation(90);
-		downRunAnim.addFrame(Resource.getResourceImage("data/main-character5.png"));
-		downRunAnim.addFrame(Resource.getResourceImage("data/main-character6.png"));
-		deathImage = Resource.getResourceImage("data/main-character4.png");
+		downRunAnim.addFrame(Resource.getResourceImage("data/down-run.png"));
+		//downRunAnim.addFrame(Resource.getResourceImage("data/main-character6.png"));
+		deathImage = Resource.getResourceImage("data/death_character.png");
 		try {
 			jumpSound = Applet.newAudioClip(new URL("file","","data/jump.wav"));
 			deadSound = Applet.newAudioClip(new URL("file","","data/dead.wav"));
@@ -84,6 +87,9 @@ public class MainCharacter {
 			case DEATH:
 				g.drawImage(deathImage, (int)posX, (int)posY, null);
 				break;
+			case START: 
+				g.drawImage(startImage, (int)posX, (int)posY-5, null);
+				break;
 		}
 		Rectangle bound = getBound();
 		g.setColor(Color.RED);
@@ -111,7 +117,7 @@ public class MainCharacter {
 			if (jumpSound != null) {
 				jumpSound.play();
 			}
-			speedY = -7.5f;
+			speedY = -8.2f; //updated tu 7.5 -> 8.2
 			posY += speedY;
 			state = JUMPING;
 		}
