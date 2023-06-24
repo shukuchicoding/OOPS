@@ -12,5 +12,4 @@ public class GameObjs {
 	
 	int spriteCounter = 0; //đếm thời gian xuất hiện hình ảnh nhân vật
 	int spriteNum = 1; //hình ảnh đầu tiên, ví dụ: run1, attack1		
-	}
 }
