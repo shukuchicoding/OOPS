@@ -147,14 +147,14 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 //			System.out.println("keyPressed "+e.getKeyCode());
 			switch (gameState) {
 			case START_GAME_STATE:
-				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-					mainCharacter.jump();
-				}
-				else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-					mainCharacter.down(true);
-				}
+//				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+//					mainCharacter.jump();
+//				}
+//				else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+//					mainCharacter.down(true);
+//				}
 				gameState = GAME_PLAYING_STATE;
-			
+
 				break;
 			case GAME_PLAYING_STATE:
 				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
