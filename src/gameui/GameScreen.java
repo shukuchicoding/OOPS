@@ -85,6 +85,8 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 		case START_GAME_STATE:
 			mainCharacter.draw(g);
 			g.drawImage(gameStartButtonImage, 300, 30, null);
+			bounds = new Rectangle(293, 50, 200, 30);
+			g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
 			break;
 		case GAME_PLAYING_STATE:
 		case GAME_OVER_STATE:
@@ -203,7 +205,13 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			if (bounds.contains(clicked) && gameState == GAME_OVER_STATE) {
 				gameState = GAME_PLAYING_STATE;
 				resetGame();
-			} else return;
+			} else if (bounds.contains(clicked) && gameState == START_GAME_STATE) {
+				gameState = GAME_PLAYING_STATE;
+				resetGame();
+			}
+				
+				
+			else return;
 		}
 
 	}

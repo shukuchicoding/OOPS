@@ -49,18 +49,18 @@ public class MainCharacter {
 		posY = LAND_POSY;
 		rectBound = new Rectangle();
 		startImage = Resource.getResourceImage("data/start_character.png");
-		normalRunAnim = new Animation(80);
+		normalRunAnim = new Animation(100);
 		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_1.png"));
 		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_2.png"));
 		jumping = Resource.getResourceImage("data/jumping.png");
 
-		downRunAnim = new Animation(80);
+		downRunAnim = new Animation(60);
 		downRunAnim.addFrame(Resource.getResourceImage("data/down_run.png"));
 
 		//downRunAnim.addFrame(Resource.getResourceImage("data/main-character6.png"));
 
 		deathImage = Resource.getResourceImage("data/death_character.png");
-		attackAnim = new Animation(80);
+		attackAnim = new Animation(100);
 		attackAnim.addFrame(Resource.getResourceImage("data/main-character7.png"));
 		attackAnim.addFrame(Resource.getResourceImage("data/main-character8.png"));
 		try {
@@ -96,20 +96,21 @@ public class MainCharacter {
 				g.drawImage(deathImage, (int)posX, (int)posY, null);
 				break;
 			case START: 
-				g.drawImage(startImage, (int)posX, (int)posY-5, null);
+				g.drawImage(startImage, (int)posX, (int)posY - 5, null);
 				break;
 			case ATTACK:
 				g.drawImage(attackAnim.getFrame(), (int)posX, (int)posY, null);
 				break;
 		}
 		Rectangle bound = getBound();
-//		g.setColor(Color.RED);
+		g.setColor(Color.RED);
 		g.drawRect(bound.x, bound.y, bound.width, bound.height);
 	}
 	
 	public void update() {
 		normalRunAnim.updateFrame();
 		downRunAnim.updateFrame();
+		attackAnim.updateFrame();
 		if (posY >= LAND_POSY) {
 			posY = LAND_POSY;
 			if (state != DOWN_RUN) {
@@ -128,8 +129,8 @@ public class MainCharacter {
 			if (jumpSound != null) {
 				jumpSound.play();
 			}
-			speedY = -9f;
-			posY += speedY;
+			speedY = -10f;
+			posY += speedY * 0.0675;
 			state = JUMPING;
 		}
 	}
@@ -147,15 +148,15 @@ public class MainCharacter {
 	}
 	
 	public void attack(boolean isAttack) {
-		if (state == ATTACK) {
-			return;
-		}
-		else if (isAttack) {
+//		if (state == NORMAL_RUN) {
+//			return;
+//		}
+		if (isAttack) {
 			state = ATTACK;
 		}
-		else {
-			state = NORMAL_RUN;
-		}
+//		else {
+//			state = NORMAL_RUN;
+//		}
 	}
 	
 	public void dead(boolean isDeath) {
