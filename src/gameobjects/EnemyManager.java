@@ -20,7 +20,7 @@ public class EnemyManager {
 		rand = new Random();
 		tree = Resource.getResourceImage("data/tree.png");
 		stone = Resource.getResourceImage("data/stone.png");
-		enemies = new ArrayList<Enemy>();
+		enemies = new ArrayList<>();
 		this.mainCharacter = mainCharacter;
 		enemies.add(createEnemy());
 	}
@@ -46,10 +46,10 @@ public class EnemyManager {
 	private Enemy createEnemy() {
 		int type = rand.nextInt(2);
 		if (type == 0) {
-			return new TreeAndStone(mainCharacter, 600, tree.getWidth() - 10, tree.getHeight() - 10, tree);
+			return new TreeAndStone(mainCharacter, 800, tree.getWidth() - 10, tree.getHeight() - 10, tree);
 		}
 		else {
-			return new TreeAndStone(mainCharacter, 600, stone.getWidth() - 10, stone.getHeight() - 10, stone);
+			return new TreeAndStone(mainCharacter, 800, stone.getWidth() - 10, stone.getHeight() - 10, stone);
 		}
 	}
 	
