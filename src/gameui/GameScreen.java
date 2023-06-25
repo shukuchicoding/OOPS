@@ -161,6 +161,9 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 					mainCharacter.down(true);
 				}
+				else if (e.getKeyCode() == KeyEvent.VK_A) {
+					mainCharacter.attack(true);
+				}
 				break;
 			case GAME_OVER_STATE:
 				if (e.getKeyCode() == KeyEvent.VK_SPACE) {

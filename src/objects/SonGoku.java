@@ -10,7 +10,7 @@ public class SonGoku extends GameObjs{
 	private static final int DEATH = 3;
 	private static final int ATTACK = 4; //bum chiu
 	
-	
+//	Tạm thời chưa làm gì ở đây
 	
 	//Khoi tao nhan vat
 	

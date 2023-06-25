@@ -19,8 +19,9 @@ public class MainCharacter {
 	private static final int NORMAL_RUN = 0;
 	private static final int JUMPING = 1;
 	private static final int DOWN_RUN = 2;
-	private static final int DEATH = 3;
-	private static final int START = 4; // update them trang thai start
+	private static final int ATTACK = 3;
+	private static final int DEATH = 4;
+	private static final int START = 5; // update them trang thai start
 	
 	private float posX;
 	private float posY;
@@ -37,6 +38,7 @@ public class MainCharacter {
 	private BufferedImage jumping;
 	private Animation downRunAnim;
 	private BufferedImage deathImage;
+	private Animation attackAnim;
 	
 	private AudioClip jumpSound;
 	private AudioClip deadSound;
@@ -47,14 +49,16 @@ public class MainCharacter {
 		posY = LAND_POSY;
 		rectBound = new Rectangle();
 		startImage = Resource.getResourceImage("data/start_character.png");
-		normalRunAnim = new Animation(90);
+		normalRunAnim = new Animation(80);
 		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_1.png"));
 		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_2.png"));
 		jumping = Resource.getResourceImage("data/jumping.png");
-		downRunAnim = new Animation(90);
-		downRunAnim.addFrame(Resource.getResourceImage("data/down-run.png"));
-		//downRunAnim.addFrame(Resource.getResourceImage("data/main-character6.png"));
+		downRunAnim = new Animation(80);
+		downRunAnim.addFrame(Resource.getResourceImage("data/down_run.png"));
 		deathImage = Resource.getResourceImage("data/death_character.png");
+		attackAnim = new Animation(80);
+		attackAnim.addFrame(Resource.getResourceImage("data/main-character7.png"));
+		attackAnim.addFrame(Resource.getResourceImage("data/main-character8.png"));
 		try {
 			jumpSound = Applet.newAudioClip(new URL("file","","data/jump.wav"));
 			deadSound = Applet.newAudioClip(new URL("file","","data/dead.wav"));
@@ -90,9 +94,12 @@ public class MainCharacter {
 			case START: 
 				g.drawImage(startImage, (int)posX, (int)posY-5, null);
 				break;
+			case ATTACK:
+				g.drawImage(attackAnim.getFrame(), (int)posX, (int)posY, null);
+				break;
 		}
 		Rectangle bound = getBound();
-		g.setColor(Color.RED);
+//		g.setColor(Color.RED);
 		g.drawRect(bound.x, bound.y, bound.width, bound.height);
 	}
 	
@@ -117,7 +124,7 @@ public class MainCharacter {
 			if (jumpSound != null) {
 				jumpSound.play();
 			}
-			speedY = -8.2f; //updated tu 7.5 -> 8.2
+			speedY = -9f;
 			posY += speedY;
 			state = JUMPING;
 		}
@@ -127,13 +134,26 @@ public class MainCharacter {
 		if (state == JUMPING) {
 			return;
 		}
-		if (isDown) {
+		else if (isDown) {
 			state = DOWN_RUN;
 		}
 		else {
 			state = NORMAL_RUN;
 		}
 	}
+	
+	public void attack(boolean isAttack) {
+		if (state == ATTACK) {
+			return;
+		}
+		else if (isAttack) {
+			state = ATTACK;
+		}
+		else {
+			state = NORMAL_RUN;
+		}
+	}
+	
 	
 	public Rectangle getBound() {
 		rectBound = new Rectangle();
