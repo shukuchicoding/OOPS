@@ -53,8 +53,14 @@ public class MainCharacter {
 		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_1.png"));
 		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_2.png"));
 		jumping = Resource.getResourceImage("data/jumping.png");
+
 		downRunAnim = new Animation(80);
 		downRunAnim.addFrame(Resource.getResourceImage("data/down_run.png"));
+
+		downRunAnim = new Animation(90);
+		downRunAnim.addFrame(Resource.getResourceImage("data/down_run.png"));
+		//downRunAnim.addFrame(Resource.getResourceImage("data/main-character6.png"));
+
 		deathImage = Resource.getResourceImage("data/death_character.png");
 		attackAnim = new Animation(80);
 		attackAnim.addFrame(Resource.getResourceImage("data/main-character7.png"));
