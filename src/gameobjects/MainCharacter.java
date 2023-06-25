@@ -57,8 +57,6 @@ public class MainCharacter {
 		downRunAnim = new Animation(80);
 		downRunAnim.addFrame(Resource.getResourceImage("data/down_run.png"));
 
-		downRunAnim = new Animation(90);
-		downRunAnim.addFrame(Resource.getResourceImage("data/down_run.png"));
 		//downRunAnim.addFrame(Resource.getResourceImage("data/main-character6.png"));
 
 		deathImage = Resource.getResourceImage("data/death_character.png");
@@ -160,24 +158,6 @@ public class MainCharacter {
 		}
 	}
 	
-	
-	public Rectangle getBound() {
-		rectBound = new Rectangle();
-		if (state == DOWN_RUN) {
-			rectBound.x = (int)posX + 5;
-			rectBound.y = (int)posY + 20;
-			rectBound.width = downRunAnim.getFrame().getWidth() - 10;
-			rectBound.height = downRunAnim.getFrame().getHeight();
-		}
-		else {
-			rectBound.x = (int)posX + 5;
-			rectBound.y = (int)posY;
-			rectBound.width = normalRunAnim.getFrame().getWidth() - 10;
-			rectBound.height = normalRunAnim.getFrame().getHeight();
-		}
-		return rectBound;
-	}
-	
 	public void dead(boolean isDeath) {
 		if (isDeath) {
 			state = DEATH;
@@ -201,5 +181,28 @@ public class MainCharacter {
 		if (score % 100 == 0) {
 			scoreUpSound.play();
 		}
+	}
+	
+	public Rectangle getBound() {
+		rectBound = new Rectangle();
+		if (state == DOWN_RUN) {
+			rectBound.x = (int)posX + 5;
+			rectBound.y = (int)posY + 20;
+			rectBound.width = downRunAnim.getFrame().getWidth() - 10;
+			rectBound.height = downRunAnim.getFrame().getHeight();
+		}
+		else if (state == NORMAL_RUN){
+			rectBound.x = (int)posX + 5;
+			rectBound.y = (int)posY;
+			rectBound.width = normalRunAnim.getFrame().getWidth() - 10;
+			rectBound.height = normalRunAnim.getFrame().getHeight();
+		}
+		else if (state == ATTACK){
+			rectBound.x = (int)posX + 5;
+			rectBound.y = (int)posY;
+			rectBound.width = attackAnim.getFrame().getWidth() - 10;
+			rectBound.height = attackAnim.getFrame().getHeight();
+		}
+		return rectBound;
 	}
 }
