@@ -13,7 +13,7 @@ import util.Animation;
 import util.Resource;
 
 public class MainCharacter {
-	public static final int LAND_POSY = 120; // updated tu 130 -> 120
+	public static final int LAND_POSY = 100; // updated tu 130 -> 120 -> 100
 	public static final float GRAVITY = 0.4f;
 	
 	private static final int NORMAL_RUN = 0;
@@ -129,7 +129,7 @@ public class MainCharacter {
 			if (jumpSound != null) {
 				jumpSound.play();
 			}
-			speedY = -10f;
+			speedY = -9f; //10 -> 9 
 			posY += speedY * 0.0675;
 			state = JUMPING;
 		}
