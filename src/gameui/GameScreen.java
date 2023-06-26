@@ -19,17 +19,17 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 	private static final int START_GAME_STATE = 0;
 	private static final int GAME_PLAYING_STATE = 1;
 	private static final int GAME_OVER_STATE = 2;
-	
+
 	private Land land;
 	private MainCharacter mainCharacter;
 	private EnemyManager enemyManager;
 	private Cloud clouds;
 	private Thread thread;
-	
+
 	private boolean isKeyPressed;
-	
+
 	private int gameState = START_GAME_STATE;
-	
+
 	private BufferedImage startImage;
 	private BufferedImage replayButtonImage;
 	private BufferedImage gameOverButtonImage;
@@ -38,11 +38,9 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 	private Rectangle bounds;
 
 	public GameScreen() {
-		
-		
 
 		mainCharacter = new MainCharacter();
-		//land = new Land(GameWindow.SCREEN_WIDTH, mainCharacter);
+		// land = new Land(GameWindow.SCREEN_WIDTH, mainCharacter);
 		mainCharacter.setSpeedX(4);
 
 		replayButtonImage = Resource.getResourceImage("data/replay_button.png");
@@ -50,11 +48,10 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 		gameStartButtonImage = Resource.getResourceImage("data/gamestart_text.png");
 		bgGameImage = Resource.getResourceImage("data/bg1.png");
 		enemyManager = new EnemyManager(mainCharacter);
-		clouds = new Cloud(GameWindow.SCREEN_WIDTH, mainCharacter);	
-		
-		
+		clouds = new Cloud(GameWindow.SCREEN_WIDTH, mainCharacter);
+
 	}
-	
+
 	public void startGame() {
 		thread = new Thread(this);
 		thread.start();
@@ -64,7 +61,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 	public void gameUpdate() {
 		if (gameState == GAME_PLAYING_STATE) {
 			clouds.update();
-			//land.update();
+			// land.update();
 			mainCharacter.update();
 			enemyManager.update();
 			if (enemyManager.isCollision()) {
@@ -74,13 +71,14 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			}
 		}
 	}
+
 	@Override
 	public void paint(Graphics g) {
 		g.setColor(Color.decode("#f7f7f7"));
 		g.fillRect(0, 0, getWidth(), getHeight());
-		g.drawImage(bgGameImage, 0, 0,null);
-		g.setFont(new Font("TimesRoman", Font.BOLD, 15   ));
-		
+		g.drawImage(bgGameImage, 0, 0, null);
+		g.setFont(new Font("TimesRoman", Font.BOLD, 15));
+
 		switch (gameState) {
 		case START_GAME_STATE:
 			mainCharacter.draw(g);
@@ -90,42 +88,42 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			break;
 		case GAME_PLAYING_STATE:
 		case GAME_OVER_STATE:
-				clouds.draw(g);
-				//land.draw(g);
-				enemyManager.draw(g);
-				mainCharacter.draw(g);
-				g.setColor(Color.BLACK);
-				g.drawString("SCORE: " + mainCharacter.score, 680, 20);
-				if(gameState == GAME_OVER_STATE) {
-					g.drawImage(gameOverButtonImage, 300, 20, null);
-					g.drawImage(replayButtonImage, 378, 74, null);
-					g.drawString("TOTAL SCORE: " + mainCharacter.score, 330, 130);
-					bounds = new Rectangle(250, 25, 290, 120);
-					g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
-				}
-				break;
+			clouds.draw(g);
+			// land.draw(g);
+			enemyManager.draw(g);
+			mainCharacter.draw(g);
+			g.setColor(Color.BLACK);
+			g.drawString("SCORE: " + mainCharacter.score, 680, 20);
+			if (gameState == GAME_OVER_STATE) {
+				g.drawImage(gameOverButtonImage, 300, 20, null);
+				g.drawImage(replayButtonImage, 378, 74, null);
+				g.drawString("TOTAL SCORE: " + mainCharacter.score, 330, 130);
+				bounds = new Rectangle(250, 25, 290, 120);
+				g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
+			}
+			break;
 		}
 	}
-	
+
 	@Override
 	public void run() {
 		int fps = 100;
 		long msPerFrame = 1000 * 1000000 / fps;
 		long lastTime = 0;
 		long elapsed;
-		
+
 		int msSleep;
 		int nanoSleep;
-		
+
 		long endProcessGame;
 		long lag = 0;
-		
+
 		while (true) {
 			gameUpdate();
 			repaint();
 			endProcessGame = System.nanoTime();
 			elapsed = (lastTime + msPerFrame - System.nanoTime());
-			msSleep = (int)(elapsed / 1000000);
+			msSleep = (int) (elapsed / 1000000);
 //			nanoSleep = (int)(elapsed % 1000000);
 			if (msSleep <= 0) {
 				lastTime = System.nanoTime();
@@ -140,6 +138,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			lastTime = System.nanoTime();
 		}
 	}
+
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (!isKeyPressed) {
@@ -177,6 +176,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			}
 		}
 	}
+
 	@Override
 	public void keyReleased(KeyEvent e) {
 		isKeyPressed = false;
@@ -186,11 +186,12 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			}
 		}
 	}
+
 	@Override
 	public void keyTyped(KeyEvent e) {
-		
+
 	}
-	
+
 	public void resetGame() {
 		enemyManager.reset();
 		mainCharacter.dead(false);
@@ -209,9 +210,9 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				gameState = GAME_PLAYING_STATE;
 				resetGame();
 			}
-				
-				
-			else return;
+
+			else
+				return;
 		}
 
 	}
