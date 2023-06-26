@@ -13,7 +13,7 @@ import util.Animation;
 import util.Resource;
 
 public class MainCharacter {
-	public static final int LAND_POSY = 100; // updated tu 130 -> 120 -> 100
+	public static final int LAND_POSY = 95; 
 	public static final float GRAVITY = 0.4f;
 	
 	private static final int NORMAL_RUN = 0;
@@ -48,18 +48,23 @@ public class MainCharacter {
 		posX = 50;
 		posY = LAND_POSY;
 		rectBound = new Rectangle();
-		startImage = Resource.getResourceImage("data/start_character.png");
+		startImage = Resource.getResourceImage("data/Goku_start.png");
 		normalRunAnim = new Animation(100);
-		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_1.png"));
-		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_2.png"));
-		jumping = Resource.getResourceImage("data/jumping.png");
+		normalRunAnim.addFrame(Resource.getResourceImage("data/Goku_run_1.png"));
+		normalRunAnim.addFrame(Resource.getResourceImage("data/Goku_run_2.png"));
+		normalRunAnim.addFrame(Resource.getResourceImage("data/Goku_run_3.png"));
+		normalRunAnim.addFrame(Resource.getResourceImage("data/Goku_run_4.png"));
+		normalRunAnim.addFrame(Resource.getResourceImage("data/Goku_run_5.png"));
+		normalRunAnim.addFrame(Resource.getResourceImage("data/Goku_run_6.png"));
+
+		jumping = Resource.getResourceImage("data/Goku_jump.png");
 
 		downRunAnim = new Animation(60);
-		downRunAnim.addFrame(Resource.getResourceImage("data/down_run.png"));
+		downRunAnim.addFrame(Resource.getResourceImage("data/Goku_down_run.png"));
 
 		//downRunAnim.addFrame(Resource.getResourceImage("data/main-character6.png"));
 
-		deathImage = Resource.getResourceImage("data/death_character.png");
+		deathImage = Resource.getResourceImage("data/Goku_death.png");
 //		attackAnim = new Animation(100);
 //		attackAnim.addFrame(Resource.getResourceImage("data/main-character7.png"));
 //		attackAnim.addFrame(Resource.getResourceImage("data/main-character8.png"));
