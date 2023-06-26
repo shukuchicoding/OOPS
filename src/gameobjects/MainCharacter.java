@@ -60,9 +60,9 @@ public class MainCharacter {
 		//downRunAnim.addFrame(Resource.getResourceImage("data/main-character6.png"));
 
 		deathImage = Resource.getResourceImage("data/death_character.png");
-		attackAnim = new Animation(100);
-		attackAnim.addFrame(Resource.getResourceImage("data/main-character7.png"));
-		attackAnim.addFrame(Resource.getResourceImage("data/main-character8.png"));
+//		attackAnim = new Animation(100);
+//		attackAnim.addFrame(Resource.getResourceImage("data/main-character7.png"));
+//		attackAnim.addFrame(Resource.getResourceImage("data/main-character8.png"));
 		try {
 			jumpSound = Applet.newAudioClip(new URL("file","","data/jump.wav"));
 			deadSound = Applet.newAudioClip(new URL("file","","data/dead.wav"));
@@ -110,7 +110,7 @@ public class MainCharacter {
 	public void update() {
 		normalRunAnim.updateFrame();
 		downRunAnim.updateFrame();
-		attackAnim.updateFrame();
+//		attackAnim.updateFrame();
 		if (posY >= LAND_POSY) {
 			posY = LAND_POSY;
 			if (state != DOWN_RUN) {
