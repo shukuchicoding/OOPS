@@ -97,8 +97,8 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				g.setColor(Color.BLACK);
 				g.drawString("SCORE: " + mainCharacter.score, 680, 20);
 				if(gameState == GAME_OVER_STATE) {
-					g.drawImage(gameOverButtonImage, 300, 30, null);
-					g.drawImage(replayButtonImage, 383, 70, null);
+					g.drawImage(gameOverButtonImage, 300, 20, null);
+					g.drawImage(replayButtonImage, 378, 74, null);
 					g.drawString("TOTAL SCORE: " + mainCharacter.score, 330, 130);
 					bounds = new Rectangle(250, 25, 290, 120);
 					g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
