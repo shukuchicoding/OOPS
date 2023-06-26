@@ -13,7 +13,7 @@ import util.Animation;
 import util.Resource;
 
 public class MainCharacter {
-	public static final int LAND_POSY = 120; // updated tu 130 -> 120
+	public static final int LAND_POSY = 100; // updated tu 130 -> 120 -> 100
 	public static final float GRAVITY = 0.4f;
 	
 	private static final int NORMAL_RUN = 0;
@@ -60,9 +60,9 @@ public class MainCharacter {
 		//downRunAnim.addFrame(Resource.getResourceImage("data/main-character6.png"));
 
 		deathImage = Resource.getResourceImage("data/death_character.png");
-		attackAnim = new Animation(100);
-		attackAnim.addFrame(Resource.getResourceImage("data/main-character7.png"));
-		attackAnim.addFrame(Resource.getResourceImage("data/main-character8.png"));
+//		attackAnim = new Animation(100);
+//		attackAnim.addFrame(Resource.getResourceImage("data/main-character7.png"));
+//		attackAnim.addFrame(Resource.getResourceImage("data/main-character8.png"));
 		try {
 			jumpSound = Applet.newAudioClip(new URL("file","","data/jump.wav"));
 			deadSound = Applet.newAudioClip(new URL("file","","data/dead.wav"));
@@ -110,7 +110,7 @@ public class MainCharacter {
 	public void update() {
 		normalRunAnim.updateFrame();
 		downRunAnim.updateFrame();
-		attackAnim.updateFrame();
+//		attackAnim.updateFrame();
 		if (posY >= LAND_POSY) {
 			posY = LAND_POSY;
 			if (state != DOWN_RUN) {
@@ -129,7 +129,7 @@ public class MainCharacter {
 			if (jumpSound != null) {
 				jumpSound.play();
 			}
-			speedY = -10f;
+			speedY = -9f; //10 -> 9 
 			posY += speedY * 0.0675;
 			state = JUMPING;
 		}
