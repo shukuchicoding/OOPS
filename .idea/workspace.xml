@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aed62cc5-2c0b-434f-8165-9367b7c4c70d" name="Changes" comment="thêm goku bantumlum">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Goku_attack_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Goku_attack_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Goku_attack_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Goku_attack_2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/gameobjects/MainCharacter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameobjects/MainCharacter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameobjects/MainCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/MainCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameui/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameui/GameScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,16 +37,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/OOP/OOPS/OOPS",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/OOP/OOPS/OOPS&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gameui.GameWindow" />
@@ -75,7 +80,21 @@
       <option name="project" value="LOCAL" />
       <updated>1687867547231</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="thêm goku bantumlum">
+      <created>1687868127613</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1687868127613</updated>
+    </task>
+    <task id="LOCAL-00004" summary="thêm goku bantumlum">
+      <created>1687868415760</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1687868415760</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
