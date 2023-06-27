@@ -52,4 +52,11 @@ public class MaBu extends Enemy {
 		return false;
 	}
 
+	public void dead (boolean isDeath) {
+		
+	}
+	
+	public void revive (boolean isRevive) {
+		
+	}
 }

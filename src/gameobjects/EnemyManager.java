@@ -66,6 +66,7 @@ public class EnemyManager {
 		return false;
 	}
 
+	
 	public void reset() {
 		enemies.clear();
 		enemies.add(createEnemy());

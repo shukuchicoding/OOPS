@@ -1,20 +1,23 @@
 package gameobjects;
 
-import util.Resource;
-
-import javax.imageio.ImageIO;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import util.Resource;
+
 public class Bullet {
-    int x, y, speed;
+    float x, y, speed;
     BufferedImage image;
 
     boolean visible;
-
-    public Bullet(int startX, int startY){
+    static int countCol = 0;
+    
+    private Rectangle bulletBound;
+    private MaBu maBu;
+    public Bullet(float startX, float startY){
         x = startX;
         y = startY;
-        speed = 10;
+        speed = 10.0f;
         image = Resource.getResourceImage("data/bullet_Goku.png");
         visible = true;
     }
@@ -25,12 +28,29 @@ public class Bullet {
             visible = false;
         }
     }
-
-    public int getY() {
+    
+    public Rectangle getBoundBullet() {
+    	bulletBound = new Rectangle();
+    	bulletBound.x = (int)x + 5 ;
+    	bulletBound.y = (int)y + 5;
+    	bulletBound.width = image.getWidth() - 10;
+    	bulletBound.height = image.getHeight() - 10;
+    	return bulletBound;
+    }
+    
+    public boolean isCollision() {
+		if (this.getBoundBullet().intersects(maBu.getBound())) {
+			return true;
+		}
+		return false;
+	}
+    
+    
+    public float getY() {
         return y;
     }
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 
