@@ -5,8 +5,11 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import gameinterface.Enemy;
+
 public class TreeAndStone extends Enemy {
 	public static final int Y_LAND = 185;
+//	public static final int Y_LAND = 200;
 	
 	private int posX;
 	private int width;

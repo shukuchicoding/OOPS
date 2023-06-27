@@ -6,29 +6,24 @@ import java.awt.image.BufferedImage;
 
 import gameinterface.Enemy;
 
-public class MaBu extends Enemy {
-
-	private float posX = 650.f;
-	private float posY = 20.f;
-	private float speedY = 0.2f;
-	private int directionY = 1;
+public class BulletBu extends Enemy {
+	private float posX;
+	private float posY;
+	private float speedX;
 
 	private BufferedImage image;
 	private Rectangle rectBound;
 
-	public MaBu(BufferedImage image, float posX, float posY, float speedY) {
+	public BulletBu(float posX, float posY, float speedX, BufferedImage image) {
 		this.image = image;
 		this.posX = posX;
 		this.posY = posY;
-		this.speedY = speedY;
+		this.speedX = speedX;
 	}
 
 	@Override
 	public void update() {
-		if (posY <= 18 || posY >= 40) {
-			directionY *= -1;
-		}
-		posY += directionY * speedY;
+		posX -= speedX;
 	}
 
 	@Override
@@ -43,12 +38,14 @@ public class MaBu extends Enemy {
 		rectBound.y = (int) posY + 5;
 		rectBound.width = image.getWidth() - 10;
 		rectBound.height = image.getHeight() - 10;
-		return rectBound;
+		return null;
 	}
 
 	@Override
 	public boolean isOutOfScreen() {
-		// TODO Auto-generated method stub
+		if (posX < -image.getWidth()) {
+			return true;
+		}
 		return false;
 	}
 

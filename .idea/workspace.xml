@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90fc1af1-a965-4f46-ab47-44a8ff6537dc" name="Changes" comment="ks">
+    <list default="true" id="aed62cc5-2c0b-434f-8165-9367b7c4c70d" name="Changes" comment="thêm goku bantumlum">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/gameui/GameScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameui/GameScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameui/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameui/GameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameobjects/MainCharacter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameobjects/MainCharacter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/MainCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/MainCharacter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -20,7 +27,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2Rgzjx86ntDd4PgNmGftDgRVnqr" />
+  <component name="ProjectId" id="2RdYoicqhXgkGOMqvegFM4fHqzO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -29,7 +36,10 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true"
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/OOP/OOPS/OOPS",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
@@ -44,21 +54,32 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="90fc1af1-a965-4f46-ab47-44a8ff6537dc" name="Changes" comment="" />
-      <created>1687686653310</created>
+      <changelist id="aed62cc5-2c0b-434f-8165-9367b7c4c70d" name="Changes" comment="" />
+      <created>1687581601616</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1687686653310</updated>
+      <updated>1687581601616</updated>
+      <workItem from="1687581602697" duration="20000" />
     </task>
-    <task id="LOCAL-00001" summary="ks">
-      <created>1687688076799</created>
+    <task id="LOCAL-00001" summary="thêm goku bantumlum">
+      <created>1687867500203</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1687688076799</updated>
+      <updated>1687867500203</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="thêm goku bantumlum">
+      <created>1687867547231</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1687867547231</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -72,7 +93,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ks" />
-    <option name="LAST_COMMIT_MESSAGE" value="ks" />
+    <MESSAGE value="thêm goku bantumlum" />
+    <option name="LAST_COMMIT_MESSAGE" value="thêm goku bantumlum" />
   </component>
 </project>
