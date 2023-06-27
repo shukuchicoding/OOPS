@@ -51,11 +51,11 @@ public class MainCharacter {
 		startImage = Resource.getResourceImage("data/Goku_start.png");
 		normalRunAnim = new Animation(100);
 
-		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_1.png"));
-		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_2.png"));
-
-		
-		jumping = Resource.getResourceImage("data/jumping.png");
+//		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_1.png"));
+//		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_2.png"));
+//
+//		
+//		jumping = Resource.getResourceImage("data/jumping.png");
 
 		normalRunAnim.addFrame(Resource.getResourceImage("data/Goku_run_1.png"));
 		normalRunAnim.addFrame(Resource.getResourceImage("data/Goku_run_2.png"));
@@ -66,16 +66,16 @@ public class MainCharacter {
 
 		jumping = Resource.getResourceImage("data/Goku_jump.png");
 
-
+		
 		downRunAnim = new Animation(60);
 		downRunAnim.addFrame(Resource.getResourceImage("data/Goku_down_run.png"));
 
 		//downRunAnim.addFrame(Resource.getResourceImage("data/main-character6.png"));
 
 		deathImage = Resource.getResourceImage("data/Goku_death.png");
-//		attackAnim = new Animation(100);
-//		attackAnim.addFrame(Resource.getResourceImage("data/main-character7.png"));
-//		attackAnim.addFrame(Resource.getResourceImage("data/main-character8.png"));
+		attackAnim = new Animation(100);
+		attackAnim.addFrame(Resource.getResourceImage("data/Goku_attack_1.png"));
+		attackAnim.addFrame(Resource.getResourceImage("data/Goku_attack_2.png"));
 		try {
 			jumpSound = Applet.newAudioClip(new URL("file","","data/jump.wav"));
 			deadSound = Applet.newAudioClip(new URL("file","","data/dead.wav"));
@@ -142,7 +142,7 @@ public class MainCharacter {
 			if (jumpSound != null) {
 				jumpSound.play();
 			}
-			speedY = -9f; //10 -> 9 
+			speedY = -9.2f; //9->9.25 
 			posY += speedY * 0.0675;
 			state = JUMPING;
 		}
