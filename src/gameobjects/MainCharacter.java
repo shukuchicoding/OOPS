@@ -8,6 +8,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import util.Animation;
 import util.Resource;
@@ -44,6 +45,8 @@ public class MainCharacter {
 	private AudioClip deadSound;
 	private AudioClip scoreUpSound;
 
+	static ArrayList bullets;
+
 	public MainCharacter() {
 		posX = 50;
 		posY = LAND_POSY;
@@ -76,6 +79,9 @@ public class MainCharacter {
 		attackAnim = new Animation(100);
 		attackAnim.addFrame(Resource.getResourceImage("data/Goku_attack_1.png"));
 		attackAnim.addFrame(Resource.getResourceImage("data/Goku_attack_2.png"));
+
+		bullets = new ArrayList<>();
+
 		try {
 			jumpSound = Applet.newAudioClip(new URL("file", "", "data/jump.wav"));
 			deadSound = Applet.newAudioClip(new URL("file", "", "data/dead.wav"));
@@ -123,7 +129,17 @@ public class MainCharacter {
 	public void update() {
 		normalRunAnim.updateFrame();
 		downRunAnim.updateFrame();
-//		attackAnim.updateFrame();
+		attackAnim.updateFrame();
+		ArrayList bullets = MainCharacter.getBullets();
+		for(int w = 0; w < bullets.size(); w++){
+
+			Bullet m = (Bullet) bullets.get(w);
+			if (m.getVisible() == true){
+				m.move();
+			}else{
+				bullets.remove(w);
+			}
+		}
 		if (posY >= LAND_POSY) {
 			posY = LAND_POSY;
 			if (state != DOWN_RUN) {
@@ -213,5 +229,14 @@ public class MainCharacter {
 			rectBound.height = attackAnim.getFrame().getHeight();
 		}
 		return rectBound;
+	}
+
+	public void fire(){
+		Bullet z = new Bullet((int) posX, (int) posY);
+		bullets.add(z);
+	}
+
+	public static ArrayList getBullets(){
+		return bullets;
 	}
 }
