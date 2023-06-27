@@ -4,9 +4,11 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import gameinterface.Enemy;
+import gameinterface.GameSettings;
+import gameinterface.Object;
+import util.Resource;
 
-public class BulletBu extends Enemy {
+public class MabuBullet implements Object {
 	private float posX;
 	private float posY;
 	private float speedX;
@@ -14,8 +16,8 @@ public class BulletBu extends Enemy {
 	private BufferedImage image;
 	private Rectangle rectBound;
 
-	public BulletBu(float posX, float posY, float speedX, BufferedImage image) {
-		this.image = image;
+	public MabuBullet(float posX, float posY, float speedX) {
+		image = Resource.getResourceImage("data/bullet_Buu.png");
 		this.posX = posX;
 		this.posY = posY;
 		this.speedX = speedX;
@@ -38,7 +40,7 @@ public class BulletBu extends Enemy {
 		rectBound.y = (int) posY + 5;
 		rectBound.width = image.getWidth() - 10;
 		rectBound.height = image.getHeight() - 10;
-		return null;
+		return rectBound;
 	}
 
 	@Override
