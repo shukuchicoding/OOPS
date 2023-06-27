@@ -52,6 +52,8 @@ public class MainCharacter {
 		normalRunAnim = new Animation(100);
 		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_1.png"));
 		normalRunAnim.addFrame(Resource.getResourceImage("data/normal_run_2.png"));
+
+		
 		jumping = Resource.getResourceImage("data/jumping.png");
 
 		downRunAnim = new Animation(60);
