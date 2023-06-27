@@ -6,13 +6,11 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import gameobjects.Cloud;
-import gameobjects.EnemyManager;
-import gameobjects.Land;
-import gameobjects.MainCharacter;
+import gameobjects.*;
 import util.Resource;
 
 public class GameScreen extends JPanel implements Runnable, KeyListener, MouseListener {
@@ -79,6 +77,8 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 		g.drawImage(bgGameImage, 0, 0, null);
 		g.setFont(new Font("TimesRoman", Font.BOLD, 15));
 
+		Graphics2D g2d = (Graphics2D)g;
+
 		switch (gameState) {
 		case START_GAME_STATE:
 			mainCharacter.draw(g);
@@ -90,10 +90,23 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 		case GAME_OVER_STATE:
 			clouds.draw(g);
 			// land.draw(g);
+
+			ArrayList bullets = MainCharacter.getBullets();
+			for(int w = 0; w < bullets.size(); w++){
+
+				Bullet m = (Bullet) bullets.get(w);
+				g2d.drawImage(m.getImage(), m.getX(),m.getY(),null);
+			}
+
 			enemyManager.draw(g);
 			mainCharacter.draw(g);
-			g.setColor(Color.BLACK);
+
+
+
+
+			g.setColor(Color.RED);
 			g.drawString("SCORE: " + mainCharacter.score, 680, 20);
+
 			if (gameState == GAME_OVER_STATE) {
 				g.drawImage(gameOverButtonImage, 300, 20, null);
 				g.drawImage(replayButtonImage, 378, 74, null);
@@ -156,7 +169,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 
 				break;
 			case GAME_PLAYING_STATE:
-				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+				if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_UP) {
 					mainCharacter.jump();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_DOWN) {
@@ -164,6 +177,17 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				}
 				if (e.getKeyCode() == KeyEvent.VK_A) {
 					mainCharacter.attack(true);
+					//ArrayList bullets = MainCharacter.getBullets();
+//					for(int w = 0; w < bullets.size(); w++){
+//
+//						Bullet m = (Bullet) bullets.get(w);
+//						if (m.getVisible() == true){
+//							m.move();
+//						}else{
+//							bullets.remove(w);
+//						}
+//					}
+					mainCharacter.fire();
 				}
 				break;
 			case GAME_OVER_STATE:

@@ -23,7 +23,7 @@ public class BulletBu extends Enemy {
 
 	@Override
 	public void update() {
-		posX += speedX;
+		posX -= speedX;
 	}
 
 	@Override

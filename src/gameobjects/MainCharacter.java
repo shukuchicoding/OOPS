@@ -73,7 +73,7 @@ public class MainCharacter {
 		// downRunAnim.addFrame(Resource.getResourceImage("data/main-character6.png"));
 
 		deathImage = Resource.getResourceImage("data/Goku_death.png");
-		attackAnim = new Animation(200);
+		attackAnim = new Animation(100);
 		attackAnim.addFrame(Resource.getResourceImage("data/Goku_attack_1.png"));
 		attackAnim.addFrame(Resource.getResourceImage("data/Goku_attack_2.png"));
 		try {
@@ -123,7 +123,7 @@ public class MainCharacter {
 	public void update() {
 		normalRunAnim.updateFrame();
 		downRunAnim.updateFrame();
-		attackAnim.updateFrame();
+//		attackAnim.updateFrame();
 		if (posY >= LAND_POSY) {
 			posY = LAND_POSY;
 			if (state != DOWN_RUN) {
