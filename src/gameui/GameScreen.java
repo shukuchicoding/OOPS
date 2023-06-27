@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import gamemanager.GameManager;
 import gameobjects.*;
 import util.Resource;
 
@@ -20,7 +21,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 
 	private Land land;
 	private MainCharacter mainCharacter;
-	private EnemyManager enemyManager;
+	private GameManager gameManager;
 	private Cloud clouds;
 	private Thread thread;
 
@@ -45,7 +46,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 		gameOverButtonImage = Resource.getResourceImage("data/gameover_text.png");
 		gameStartButtonImage = Resource.getResourceImage("data/gamestart_text.png");
 		bgGameImage = Resource.getResourceImage("data/bg1.png");
-		enemyManager = new EnemyManager(mainCharacter);
+		gameManager = new GameManager(mainCharacter);
 		clouds = new Cloud(GameWindow.SCREEN_WIDTH, mainCharacter);
 
 	}
@@ -61,8 +62,8 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			clouds.update();
 			// land.update();
 			mainCharacter.update();
-			enemyManager.update();
-			if (enemyManager.isCollision()) {
+			gameManager.update();
+			if (gameManager.isCollision()) {
 				mainCharacter.playDeadSound();
 				gameState = GAME_OVER_STATE;
 				mainCharacter.dead(true);
@@ -91,7 +92,6 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			clouds.draw(g);
 			// land.draw(g);
 
-
 			ArrayList bullets = MainCharacter.getBullets();
 			for(int w = 0; w < bullets.size(); w++){
 
@@ -99,11 +99,8 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				g2d.drawImage(m.getImage(), m.getX(),m.getY(),null);
 			}
 
-			enemyManager.draw(g);
+			gameManager.draw(g);
 			mainCharacter.draw(g);
-
-
-
 
 			g.setColor(Color.RED);
 			g.drawString("SCORE: " + mainCharacter.score, 680, 20);
@@ -147,7 +144,6 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			try {
 				Thread.sleep(msSleep);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			lastTime = System.nanoTime();
@@ -219,7 +215,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 	}
 
 	public void resetGame() {
-		enemyManager.reset();
+		gameManager.reset();
 		mainCharacter.dead(false);
 		mainCharacter.reset();
 

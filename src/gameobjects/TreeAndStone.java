@@ -5,9 +5,9 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import gameinterface.Enemy;
+import gameinterface.Object;
 
-public class TreeAndStone extends Enemy {
+public class TreeAndStone implements Object {
 	public static final int Y_LAND = 185;
 //	public static final int Y_LAND = 200;
 	

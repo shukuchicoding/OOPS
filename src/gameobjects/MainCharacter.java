@@ -72,8 +72,7 @@ public class MainCharacter {
 		
 		downRunAnim = new Animation(60);
 		downRunAnim.addFrame(Resource.getResourceImage("data/Goku_down_run.png"));
-
-		// downRunAnim.addFrame(Resource.getResourceImage("data/main-character6.png"));
+//		downRunAnim.addFrame(Resource.getResourceImage("data/main-character6.png"));
 
 		deathImage = Resource.getResourceImage("data/Goku_death.png");
 		attackAnim = new Animation(100);
@@ -88,8 +87,7 @@ public class MainCharacter {
 			scoreUpSound = Applet.newAudioClip(new URL("file", "", "data/scoreup.wav"));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
-		}
-
+		}		
 	}
 
 	public float getSpeedX() {
@@ -121,11 +119,8 @@ public class MainCharacter {
 			g.drawImage(attackAnim.getFrame(), (int) posX, (int) posY, null);
 			break;
 		}
-//		Rectangle bound = getBound();
-//		g.setColor(Color.RED);
-//		g.drawRect(bound.x, bound.y, bound.width, bound.height);
 	}
-
+	
 	public void update() {
 		normalRunAnim.updateFrame();
 		downRunAnim.updateFrame();
@@ -145,35 +140,37 @@ public class MainCharacter {
 			if (state != DOWN_RUN) {
 				state = NORMAL_RUN;
 			}
-		} else {
+		}
+		
+		else {
 			speedY += GRAVITY;
 			posY += speedY;
 		}
-//		System.out.println("posY = " + posY);
 	}
-
+	
 	public void jump() {
 		if (posY >= LAND_POSY) {
 			if (jumpSound != null) {
 				jumpSound.play();
 			}
-
 			speedY = -9.2f; //9->9.25 
 			posY += speedY * 0.0675;
 			state = JUMPING;
 		}
 	}
-
+	
 	public void down(boolean isDown) {
 		if (state == JUMPING) {
 			return;
-		} else if (isDown) {
+		}
+		else if (isDown) {
 			state = DOWN_RUN;
-		} else {
+		}
+		else {
 			state = NORMAL_RUN;
 		}
 	}
-
+	
 	public void attack(boolean isAttack) {
 //		if (state == NORMAL_RUN) {
 //			return;
@@ -185,7 +182,7 @@ public class MainCharacter {
 //			state = NORMAL_RUN;
 //		}
 	}
-
+	
 	public void dead(boolean isDeath) {
 		if (isDeath) {
 			state = DEATH;
@@ -193,23 +190,23 @@ public class MainCharacter {
 			state = NORMAL_RUN;
 		}
 	}
-
+	
 	public void reset() {
 		posY = LAND_POSY;
 		score = 0;
 	}
-
+	
 	public void playDeadSound() {
 		deadSound.play();
 	}
-
+	
 	public void upScore() {
 		score += 20;
 		if (score % 100 == 0) {
 			scoreUpSound.play();
 		}
 	}
-
+	
 	public Rectangle getBound() {
 		rectBound = new Rectangle();
 		if (state == DOWN_RUN) {
