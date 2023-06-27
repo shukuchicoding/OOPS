@@ -91,6 +91,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			clouds.draw(g);
 			// land.draw(g);
 
+
 			ArrayList bullets = MainCharacter.getBullets();
 			for(int w = 0; w < bullets.size(); w++){
 
@@ -108,6 +109,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			g.drawString("SCORE: " + mainCharacter.score, 680, 20);
 
 			if (gameState == GAME_OVER_STATE) {
+				bullets.clear();
 				g.drawImage(gameOverButtonImage, 300, 20, null);
 				g.drawImage(replayButtonImage, 378, 74, null);
 				g.drawString("TOTAL SCORE: " + mainCharacter.score, 330, 130);
