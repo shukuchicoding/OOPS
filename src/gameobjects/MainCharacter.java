@@ -115,7 +115,6 @@ public class MainCharacter {
 			break;
 		}
 	}
-
 	
 	public void update() {
 		normalRunAnim.updateFrame();
@@ -133,7 +132,6 @@ public class MainCharacter {
 			posY += speedY;
 		}
 	}
-
 	
 	public void jump() {
 		if (posY >= LAND_POSY) {
@@ -145,7 +143,6 @@ public class MainCharacter {
 			state = JUMPING;
 		}
 	}
-
 	
 	public void down(boolean isDown) {
 		if (state == JUMPING) {
@@ -158,7 +155,6 @@ public class MainCharacter {
 			state = NORMAL_RUN;
 		}
 	}
-
 	
 	public void attack(boolean isAttack) {
 //		if (state == NORMAL_RUN) {
@@ -171,7 +167,6 @@ public class MainCharacter {
 //			state = NORMAL_RUN;
 //		}
 	}
-
 	
 	public void dead(boolean isDeath) {
 		if (isDeath) {
@@ -181,18 +176,15 @@ public class MainCharacter {
 		}
 	}
 
-
 	
 	public void reset() {
 		posY = LAND_POSY;
 		score = 0;
 	}
-
 	
 	public void playDeadSound() {
 		deadSound.play();
 	}
-
 	
 	public void upScore() {
 		score += 20;
@@ -200,7 +192,6 @@ public class MainCharacter {
 			scoreUpSound.play();
 		}
 	}
-
 	
 	public Rectangle getBound() {
 		rectBound = new Rectangle();
