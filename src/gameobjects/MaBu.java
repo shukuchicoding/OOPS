@@ -4,23 +4,25 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import gameinterface.Enemy;
+import gameinterface.Object;
+import util.Resource;
 
-public class MaBu extends Enemy {
+public class MaBu implements Object {
 
-	private float posX = 650.f;
-	private float posY = 20.f;
-	private float speedY = 0.2f;
-	private int directionY = 1;
+	private float posX;
+	private float posY;
+	private float speedY;
+	private int directionY;
 
 	private BufferedImage image;
 	private Rectangle rectBound;
 
-	public MaBu(BufferedImage image, float posX, float posY, float speedY) {
-		this.image = image;
+	public MaBu(float posX, float posY, float speedY, int directionY) {
+		image = Resource.getResourceImage("data/Buu_0.png");
 		this.posX = posX;
 		this.posY = posY;
 		this.speedY = speedY;
+		this.directionY = directionY;
 	}
 
 	@Override
@@ -51,5 +53,4 @@ public class MaBu extends Enemy {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }

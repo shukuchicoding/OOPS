@@ -92,17 +92,17 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			// land.draw(g);
 
 
+			ArrayList bullets = MainCharacter.getBullets();
+			for(int w = 0; w < bullets.size(); w++){
 
+				Bullet m = (Bullet) bullets.get(w);
+				g2d.drawImage(m.getImage(), m.getX(),m.getY(),null);
+			}
 
 			enemyManager.draw(g);
 			mainCharacter.draw(g);
 
-			ArrayList bullets = MainCharacter.getBullets();
-			for(int w = 0; w < bullets.size(); w++){
-				//g2d.drawImage(Resource.getResourceImage("data/Goku_attack_2.png"), (int)(mainCharacter.getPosX()), (int)(mainCharacter.getPosY()),null);
-				Bullet m = (Bullet) bullets.get(w);
-				g2d.drawImage(m.getImage(), m.getX(),m.getY(),null);
-			}
+
 
 
 			g.setColor(Color.RED);
@@ -173,14 +173,22 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			case GAME_PLAYING_STATE:
 				if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_UP) {
 					mainCharacter.jump();
-				}else
+				}
 				if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 					mainCharacter.down(true);
-				}else
+				}
 				if (e.getKeyCode() == KeyEvent.VK_A) {
-
 					mainCharacter.attack(true);
-
+					//ArrayList bullets = MainCharacter.getBullets();
+//					for(int w = 0; w < bullets.size(); w++){
+//
+//						Bullet m = (Bullet) bullets.get(w);
+//						if (m.getVisible() == true){
+//							m.move();
+//						}else{
+//							bullets.remove(w);
+//						}
+//					}
 					mainCharacter.fire();
 				}
 				break;
