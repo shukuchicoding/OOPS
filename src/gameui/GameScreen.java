@@ -24,7 +24,6 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 	private GameManager gameManager;
 	private Cloud clouds;
 	private Thread thread;
-
 	private MaBu maBu;
 	
 	private boolean isKeyPressed;
@@ -98,8 +97,8 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			ArrayList bullets = MainCharacter.getBullets();
 			for(int w = 0; w < bullets.size(); w++){
 
-				Bullet m = (Bullet) bullets.get(w);
-				g2d.drawImage(m.getImage(), (int)m.getX(),(int)m.getY(),null);
+				GokuBullet m = (GokuBullet) bullets.get(w);
+				g2d.drawImage(m.getImage(), m.getX(),m.getY(),null);
 			}
 
 			gameManager.draw(g);

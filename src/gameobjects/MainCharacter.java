@@ -128,7 +128,7 @@ public class MainCharacter {
 		ArrayList bullets = MainCharacter.getBullets();
 		for(int w = 0; w < bullets.size(); w++){
 
-			Bullet m = (Bullet) bullets.get(w);
+			GokuBullet m = (GokuBullet) bullets.get(w);
 			if (m.getVisible() == true){
 				m.move();
 			}else{
@@ -229,7 +229,7 @@ public class MainCharacter {
 	}
 
 	public void fire(){
-		Bullet z = new Bullet((int) posX, (int) posY);
+		GokuBullet z = new GokuBullet((int) posX, (int) posY);
 		bullets.add(z);
 	}
 
