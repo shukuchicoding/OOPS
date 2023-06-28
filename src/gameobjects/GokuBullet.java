@@ -5,13 +5,13 @@ import util.Resource;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
-public class Bullet {
+public class GokuBullet {
     int x, y, speed;
     BufferedImage image;
 
     boolean visible;
 
-    public Bullet(int startX, int startY){
+    public GokuBullet(int startX, int startY){
         x = startX;
         y = startY;
         speed = 10;

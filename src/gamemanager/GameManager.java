@@ -109,6 +109,11 @@ public class GameManager extends GameSettings{
 				return true;
 			}
 		}
+		for (MabuBullet bullet: mabuBullet) {
+			if (mainCharacter.getBound().intersects(bullet.getBound())) {
+				return true;
+			}
+		}
 		return false;
 	}
 
