@@ -24,7 +24,8 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 	private GameManager gameManager;
 	private Cloud clouds;
 	private Thread thread;
-
+	private MaBu maBu;
+	
 	private boolean isKeyPressed;
 
 	private int gameState = START_GAME_STATE;
@@ -68,6 +69,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				gameState = GAME_OVER_STATE;
 				mainCharacter.dead(true);
 			}
+			
 		}
 	}
 

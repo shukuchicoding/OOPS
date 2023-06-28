@@ -53,4 +53,14 @@ public class MaBu implements Object {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
+	public void dead (boolean isDeath) {
+		
+	}
+	
+	public void revive (boolean isRevive) {
+		
+	}
+
 }
