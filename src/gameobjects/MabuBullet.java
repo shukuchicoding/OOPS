@@ -4,28 +4,29 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import gameinterface.GameSettings;
-import gameinterface.Object;
+import gameinterface.GameObject;
+import gamemanager.GameManager;
+import gamemanager.GameSettings;
 import util.Resource;
 
-public class MabuBullet implements Object {
+public class MabuBullet implements GameObject {
 	private float posX;
 	private float posY;
-	private float speedX;
 
 	private BufferedImage image;
 	private Rectangle rectBound;
+	public GameSettings settings;
 
-	public MabuBullet(float posX, float posY, float speedX) {
+	public MabuBullet(GameManager gameManager) {
 		image = Resource.getResourceImage("data/bullet_Buu.png");
-		this.posX = posX;
-		this.posY = posY;
-		this.speedX = speedX;
+		settings = gameManager.settings;
+		posX = gameManager.mabu.posX;
+		posY = gameManager.mabu.posY;
 	}
 
 	@Override
 	public void update() {
-		posX -= speedX;
+		posX -= settings.mabuBulletSpeed;
 	}
 
 	@Override

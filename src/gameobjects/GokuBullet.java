@@ -2,43 +2,55 @@ package gameobjects;
 
 import util.Resource;
 
-import javax.imageio.ImageIO;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-public class GokuBullet {
-    int x, y, speed;
+import gameinterface.GameObject;
+import gamemanager.GameManager;
+import gamemanager.GameSettings;
+
+public class GokuBullet implements GameObject {
+    private float posX;
+    private float posY;
+
     BufferedImage image;
+    private Rectangle rectBound;
+    public GameSettings settings;
 
-    boolean visible;
-
-    public GokuBullet(int startX, int startY){
-        x = startX;
-        y = startY;
-        speed = 10;
+    public GokuBullet(GameManager gameManager) {
         image = Resource.getResourceImage("data/bullet_Goku.png");
-        visible = true;
+        settings = gameManager.settings;
+        posX = gameManager.mainCharacter.posX + (float) gameManager.mainCharacter.getBound().getWidth();
+        posY = gameManager.mainCharacter.posY + (float) gameManager.mainCharacter.getBound().getHeight() / 2
+                - image.getHeight() / 2;
     }
 
-    public void move(){
-        x += speed;
-        if ( x > 700 ){
-            visible = false;
+    @Override
+    public void update() {
+        posX += settings.gokuBulletSpeed;
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        g.drawImage(image, (int) posX, (int) posY, null);
+    }
+
+    @Override
+    public Rectangle getBound() {
+        rectBound = new Rectangle();
+        rectBound.x = (int) posX + 5;
+        rectBound.y = (int) posY + 5;
+        rectBound.width = image.getWidth() - 10;
+        rectBound.height = image.getHeight() - 10;
+        return rectBound;
+    }
+
+    @Override
+    public boolean isOutOfScreen() {
+        if (posX > settings.SCREEN_WIDTH) {
+            return true;
         }
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public boolean getVisible() {
-        return visible;
-    }
-
-    public BufferedImage getImage(){
-        return image;
+        return false;
     }
 }

@@ -3,7 +3,7 @@ package gameinterface;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public interface Object {
+public interface GameObject {
 	public abstract void update();
 	public abstract void draw(Graphics g);
 	public abstract Rectangle getBound();

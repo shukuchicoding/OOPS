@@ -6,7 +6,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -25,7 +24,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 	private Cloud clouds;
 	private Thread thread;
 	private MaBu maBu;
-	
+
 	private boolean isKeyPressed;
 
 	private int gameState = START_GAME_STATE;
@@ -69,7 +68,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				gameState = GAME_OVER_STATE;
 				mainCharacter.dead(true);
 			}
-			
+
 		}
 	}
 
@@ -80,42 +79,33 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 		g.drawImage(bgGameImage, 0, 0, null);
 		g.setFont(new Font("TimesRoman", Font.BOLD, 15));
 
-		Graphics2D g2d = (Graphics2D)g;
-
 		switch (gameState) {
-		case START_GAME_STATE:
-			mainCharacter.draw(g);
-			g.drawImage(gameStartButtonImage, 300, 30, null);
-			bounds = new Rectangle(293, 50, 200, 30);
-			g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
-			break;
-		case GAME_PLAYING_STATE:
-		case GAME_OVER_STATE:
-			clouds.draw(g);
-			// land.draw(g);
-
-			ArrayList bullets = MainCharacter.getBullets();
-			for(int w = 0; w < bullets.size(); w++){
-
-				GokuBullet m = (GokuBullet) bullets.get(w);
-				g2d.drawImage(m.getImage(), m.getX(),m.getY(),null);
-			}
-
-			gameManager.draw(g);
-			mainCharacter.draw(g);
-
-			g.setColor(Color.RED);
-			g.drawString("SCORE: " + mainCharacter.score, 680, 20);
-
-			if (gameState == GAME_OVER_STATE) {
-				bullets.clear();
-				g.drawImage(gameOverButtonImage, 300, 20, null);
-				g.drawImage(replayButtonImage, 378, 74, null);
-				g.drawString("TOTAL SCORE: " + mainCharacter.score, 330, 130);
-				bounds = new Rectangle(250, 25, 290, 120);
+			case START_GAME_STATE:
+				mainCharacter.draw(g);
+				g.drawImage(gameStartButtonImage, 300, 30, null);
+				bounds = new Rectangle(293, 50, 200, 30);
 				g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
-			}
-			break;
+				break;
+			case GAME_PLAYING_STATE:
+			case GAME_OVER_STATE:
+				clouds.draw(g);
+				// land.draw(g);
+
+				gameManager.draw(g);
+				mainCharacter.draw(g);
+
+				g.setColor(Color.RED);
+				g.drawString("SCORE: " + mainCharacter.score, 680, 20);
+
+				if (gameState == GAME_OVER_STATE) {
+
+					g.drawImage(gameOverButtonImage, 300, 20, null);
+					g.drawImage(replayButtonImage, 378, 74, null);
+					g.drawString("TOTAL SCORE: " + mainCharacter.score, 330, 130);
+					bounds = new Rectangle(250, 25, 290, 120);
+					g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
+				}
+				break;
 		}
 	}
 
@@ -138,7 +128,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			endProcessGame = System.nanoTime();
 			elapsed = (lastTime + msPerFrame - System.nanoTime());
 			msSleep = (int) (elapsed / 1000000);
-//			nanoSleep = (int)(elapsed % 1000000);
+			// nanoSleep = (int)(elapsed % 1000000);
 			if (msSleep <= 0) {
 				lastTime = System.nanoTime();
 				continue;
@@ -156,47 +146,47 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 	public void keyPressed(KeyEvent e) {
 		if (!isKeyPressed) {
 			isKeyPressed = true;
-//			System.out.println("keyPressed "+e.getKeyCode());
+			// System.out.println("keyPressed "+e.getKeyCode());
 			switch (gameState) {
-			case START_GAME_STATE:
-//				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-//					mainCharacter.jump();
-//				}
-//				else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-//					mainCharacter.down(true);
-//				}
-				gameState = GAME_PLAYING_STATE;
-
-				break;
-			case GAME_PLAYING_STATE:
-				if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_UP) {
-					mainCharacter.jump();
-				}
-				if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-					mainCharacter.down(true);
-				}
-				if (e.getKeyCode() == KeyEvent.VK_A) {
-					mainCharacter.attack(true);
-					//ArrayList bullets = MainCharacter.getBullets();
-//					for(int w = 0; w < bullets.size(); w++){
-//
-//						Bullet m = (Bullet) bullets.get(w);
-//						if (m.getVisible() == true){
-//							m.move();
-//						}else{
-//							bullets.remove(w);
-//						}
-//					}
-					mainCharacter.fire();
-				}
-				break;
-			case GAME_OVER_STATE:
-				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+				case START_GAME_STATE:
+					// if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+					// mainCharacter.jump();
+					// }
+					// else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+					// mainCharacter.down(true);
+					// }
 					gameState = GAME_PLAYING_STATE;
-					resetGame();
-				}
 
-				break;
+					break;
+				case GAME_PLAYING_STATE:
+					if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_UP) {
+						mainCharacter.jump();
+					}
+					if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+						mainCharacter.down(true);
+					}
+					if (e.getKeyCode() == KeyEvent.VK_A) {
+						mainCharacter.attack(true);
+						// ArrayList bullets = MainCharacter.getBullets();
+						// for(int w = 0; w < bullets.size(); w++){
+						//
+						// Bullet m = (Bullet) bullets.get(w);
+						// if (m.getVisible() == true){
+						// m.move();
+						// }else{
+						// bullets.remove(w);
+						// }
+						// }
+						gameManager.gokuFire();
+					}
+					break;
+				case GAME_OVER_STATE:
+					if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+						gameState = GAME_PLAYING_STATE;
+						resetGame();
+					}
+
+					break;
 			}
 		}
 	}

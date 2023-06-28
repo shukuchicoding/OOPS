@@ -4,33 +4,34 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import gameinterface.Object;
+import gameinterface.GameObject;
+import gamemanager.GameManager;
+import gamemanager.GameSettings;
 import util.Resource;
 
-public class MaBu implements Object {
+public class MaBu implements GameObject {
 
-	private float posX;
-	private float posY;
-	private float speedY;
-	private int directionY;
+	public float posX;
+	public float posY;
+	public float speedY;
 
-	private BufferedImage image;
-	private Rectangle rectBound;
+	public BufferedImage image;
+	public Rectangle rectBound;
+	public GameSettings settings;
 
-	public MaBu(float posX, float posY, float speedY, int directionY) {
+	public MaBu(GameManager gameManager) {
 		image = Resource.getResourceImage("data/Buu_0.png");
-		this.posX = posX;
-		this.posY = posY;
-		this.speedY = speedY;
-		this.directionY = directionY;
+		settings = gameManager.settings;
+		posX = settings.mabuPosX;
+		posY = settings.mabuPosY;
 	}
 
 	@Override
 	public void update() {
 		if (posY <= 18 || posY >= 40) {
-			directionY *= -1;
+			settings.mabuDirectionY *= -1;
 		}
-		posY += directionY * speedY;
+		posY += settings.mabuDirectionY * settings.mabuSpeedY;
 	}
 
 	@Override

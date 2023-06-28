@@ -5,9 +5,9 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import gameinterface.Object;
+import gameinterface.GameObject;
 
-public class TreeAndStone implements Object {
+public class TreeAndStone implements GameObject {
 	public static final int Y_LAND = 185;
 //	public static final int Y_LAND = 200;
 	
