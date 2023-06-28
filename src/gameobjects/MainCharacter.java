@@ -233,6 +233,11 @@ public class MainCharacter {
 			rectBound.y = (int) posY;
 			rectBound.width = attackAnim.getFrame().getWidth() - 10;
 			rectBound.height = attackAnim.getFrame().getHeight();
+		} else if (state == JUMPING) {
+			rectBound.x = (int) posX + 5;
+			rectBound.y = (int) posY;
+			rectBound.width = jumping.getWidth() - 10;
+			rectBound.height = jumping.getHeight();
 		}
 		return rectBound;
 	}
