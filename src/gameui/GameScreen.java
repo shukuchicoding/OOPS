@@ -23,7 +23,8 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 	private EnemyManager enemyManager;
 	private Cloud clouds;
 	private Thread thread;
-
+	private MaBu maBu;
+	
 	private boolean isKeyPressed;
 
 	private int gameState = START_GAME_STATE;
@@ -67,6 +68,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				gameState = GAME_OVER_STATE;
 				mainCharacter.dead(true);
 			}
+			
 		}
 	}
 
@@ -95,7 +97,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			ArrayList bullets = MainCharacter.getBullets();
 			for(int w = 0; w < bullets.size(); w++){
 
-				Bullet m = (Bullet) bullets.get(w);
+				GokuBullet m = (GokuBullet) bullets.get(w);
 				g2d.drawImage(m.getImage(), m.getX(),m.getY(),null);
 			}
 
