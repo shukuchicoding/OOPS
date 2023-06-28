@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aed62cc5-2c0b-434f-8165-9367b7c4c70d" name="Changes" comment="sủa goku dead khi bi buu bantumlum">
+    <list default="true" id="aed62cc5-2c0b-434f-8165-9367b7c4c70d" name="Changes" comment="sủa goku jump dead khi bi buu bantumlum va goku bantumlum phai khong xuyen qua tree va stone">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameinterface/GameSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameinterface/GameSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gamemanager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemanager/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/GokuBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/GokuBullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/MaBu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/MaBu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameui/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameui/GameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameui/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameui/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687938473416</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="sủa goku jump dead khi bi buu bantumlum va goku bantumlum phai khong xuyen qua tree va stone">
+      <created>1687940014752</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1687940014752</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +143,7 @@
     <MESSAGE value="thêm goku bantumlum" />
     <MESSAGE value="sủa goku bantumlum" />
     <MESSAGE value="sủa goku dead khi bi buu bantumlum" />
-    <option name="LAST_COMMIT_MESSAGE" value="sủa goku dead khi bi buu bantumlum" />
+    <MESSAGE value="sủa goku jump dead khi bi buu bantumlum va goku bantumlum phai khong xuyen qua tree va stone" />
+    <option name="LAST_COMMIT_MESSAGE" value="sủa goku jump dead khi bi buu bantumlum va goku bantumlum phai khong xuyen qua tree va stone" />
   </component>
 </project>

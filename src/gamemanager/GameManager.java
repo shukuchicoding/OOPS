@@ -48,10 +48,14 @@ public class GameManager extends GameSettings{
 		for (Object o : obstacles) {
 			o.update();
 		}
-		
+
 		if ((System.currentTimeMillis() - mabuPreviousShoot) >= mabuShootingPeriod) {
 			mabuFire();
 			mabuPreviousShoot = System.currentTimeMillis();
+		}
+		if (this.isCollision1()) {
+			mabu.beAttacked++;
+			System.out.println(mabu.beAttacked);
 		}
 	}
 	
@@ -116,12 +120,37 @@ public class GameManager extends GameSettings{
 		return false;
 	}
 
-	public boolean isCollision2() {
+	public boolean isCollision1() {
+		ArrayList bullets = MainCharacter.getBullets();
+		for (int w = 0; w < bullets.size(); w++) {
+			GokuBullet m = (GokuBullet) bullets.get(w);
+			if (mabu.getBound().intersects(m.getBound())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean isCollision2() { // Dan goku khong xuyen qua tree va stone
 		ArrayList bullets = MainCharacter.getBullets();
 		for (Object o : obstacles) {
 			for (int w = 0; w < bullets.size(); w++) {
 				GokuBullet m = (GokuBullet) bullets.get(w);
 				if (m.getBound().intersects(o.getBound())) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public boolean isCollision3() {
+		ArrayList bullets = MainCharacter.getBullets();
+		for (MabuBullet bullet: mabuBullet) {
+			for (int w = 0; w < bullets.size(); w++) {
+				GokuBullet m = (GokuBullet) bullets.get(w);
+				if (m.getBound().intersects(bullet.getBound())) {
+					mabuBullet.remove(bullet);
 					return true;
 				}
 			}

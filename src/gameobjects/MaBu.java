@@ -14,6 +14,8 @@ public class MaBu implements Object {
 	private float speedY;
 	private int directionY;
 
+	private int hitPoint;
+	public int beAttacked = 0;
 	private BufferedImage image;
 	private Rectangle rectBound;
 

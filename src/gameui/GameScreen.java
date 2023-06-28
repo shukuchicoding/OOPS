@@ -41,8 +41,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 
 		mainCharacter = new MainCharacter();
 		// land = new Land(GameWindow.SCREEN_WIDTH, mainCharacter);
-		mainCharacter.setSpeedX(4);
-
+		mainCharacter.setSpeedX(10);
 		replayButtonImage = Resource.getResourceImage("data/replay_button.png");
 		gameOverButtonImage = Resource.getResourceImage("data/gameover_text.png");
 		gameStartButtonImage = Resource.getResourceImage("data/gamestart_text.png");
@@ -69,7 +68,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				gameState = GAME_OVER_STATE;
 				mainCharacter.dead(true);
 			}
-			
+
 		}
 	}
 
@@ -101,6 +100,9 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				GokuBullet m = (GokuBullet) bullets.get(w);
 				g2d.drawImage(m.getImage(), m.getX(),m.getY(),null);
 				if (enemyManager.isCollision2()) {
+					bullets.remove(w);
+				}
+				if (enemyManager.isCollision3()) {
 					bullets.remove(w);
 				}
 			}

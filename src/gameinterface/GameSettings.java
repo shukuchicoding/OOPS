@@ -2,7 +2,7 @@ package gameinterface;
 
 public abstract class GameSettings {
 	// Goku stats
-	public float gokuSpeedX = 4.f;
+	public float gokuSpeedX = 5.f;
 	
 	// MaBu stats
 	public float mabuPosX = 650.f;

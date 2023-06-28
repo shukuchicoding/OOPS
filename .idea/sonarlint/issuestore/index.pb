@@ -1,7 +1,5 @@
 
 J
-src/gameui/GameWindow.java,d\9\d9ca3d342c980a751b8e6ed991fe399de6143c79
-J
 src/gameobjects/Cloud.java,c\a\ca163f0db478ed0b17f06ad6fedf66f9f875cac2
 ‹
 [.idea/shelf/Uncommitted_changes_before_Update_at_27_06_2023_7_04_CH_[Changes]/shelved.patch,1\1\11a48455a60e0742518a820adbc0099d615c1f91
