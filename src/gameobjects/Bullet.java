@@ -14,22 +14,8 @@ public class Bullet {
     
     private Rectangle bulletBound;
     private MaBu maBu;
-    public Bullet(float startX, float startY){
-        x = startX;
-        y = startY;
-        speed = 10.0f;
-        image = Resource.getResourceImage("data/bullet_Goku.png");
-        visible = true;
-    }
-
-    public void move(){
-        x += speed;
-        if ( x > 700 ){
-            visible = false;
-        }
-    }
     
-    public Rectangle getBoundBullet() {
+    public Rectangle getBound() {
     	bulletBound = new Rectangle();
     	bulletBound.x = (int)x + 5 ;
     	bulletBound.y = (int)y + 5;
@@ -38,13 +24,21 @@ public class Bullet {
     	return bulletBound;
     }
     
-    public boolean isCollision() {
-		if (this.getBoundBullet().intersects(maBu.getBound())) {
-			return true;
-		}
-		return false;
-	}
-    
+    public Bullet(float startX, float startY){
+        x = startX;
+        y = startY;
+        speed = 10.0f;
+        image = Resource.getResourceImage("data/bullet_Goku.png");
+        
+        visible = true;
+    }
+
+    public void move(){
+        x += speed;
+        if ( x > 700 ){
+            visible = false;
+        }
+    }   
     
     public float getY() {
         return y;

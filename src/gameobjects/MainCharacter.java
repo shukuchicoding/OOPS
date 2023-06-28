@@ -32,7 +32,7 @@ public class MainCharacter {
 
 	public int score = 0;
 
-	private int state = START;
+	public int state = START;
 
 	private BufferedImage startImage;
 	private Animation normalRunAnim;

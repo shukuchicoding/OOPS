@@ -14,6 +14,8 @@ public class MaBu implements Object {
 	private float speedY;
 	private int directionY;
 
+	public static int be_attacked = 0;
+	
 	private BufferedImage image;
 	private Rectangle rectBound;
 
@@ -54,6 +56,7 @@ public class MaBu implements Object {
 		return false;
 	}
 
+	
 
 	public void dead (boolean isDeath) {
 		

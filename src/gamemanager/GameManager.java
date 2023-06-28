@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 import gameinterface.Object;
+import gameobjects.Bullet;
 import gameobjects.MaBu;
 import gameobjects.MabuBullet;
 import gameobjects.MainCharacter;
@@ -18,6 +19,8 @@ import util.Resource;
 public class GameManager extends GameSettings{
 	private MainCharacter mainCharacter;
 	private MaBu mabu;
+	
+	private Bullet bullet;
 	
 	private BufferedImage tree;
 	private BufferedImage stone;
@@ -112,6 +115,15 @@ public class GameManager extends GameSettings{
 		return false;
 	}
 
+	public boolean MaBu_isCollision() {
+		if (mabu.getBound().intersects(bullet.getBound())) {
+			System.out.print("yes");
+			return true;
+		}
+		return false;
+	}
+	
+	
 	public void reset() {
 		obstacles.clear();
 		obstacles.add(createObstacle());

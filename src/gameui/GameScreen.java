@@ -70,6 +70,15 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				gameState = GAME_OVER_STATE;
 				mainCharacter.dead(true);
 			}
+			if(mainCharacter.state == 3)gameManager.MaBu_isCollision();
+//			if (gameManager.MaBu_gokuBullet()) {
+//				maBu.be_attacked += 1;
+//				System.out.print(maBu.be_attacked);
+//				if (maBu.be_attacked > 3) {
+//					maBu.dead(true);
+//					maBu.be_attacked = 0;
+//				}
+//			}
 			
 		}
 	}
