@@ -9,8 +9,9 @@ public abstract class GameSettings {
 	public float mabuPosY = 20.f;
 	public float mabuSpeedY = 0.2f;
 	public int mabuDirectionY = 1;
+	public int mabuHP = 3;
 	
 	// MaBu bullet stats
-	public int mabuShootingPeriod = 3000; // milisecond
-	public float mabuBulletSpeed = 5.f; 
+	public int mabuShootingPeriod = 5000; // milisecond
+	public float mabuBulletSpeed = 7.f;
 }

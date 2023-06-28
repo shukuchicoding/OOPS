@@ -21,10 +21,9 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 
 	private Land land;
 	private MainCharacter mainCharacter;
-	private GameManager gameManager;
+	private GameManager enemyManager;
 	private Cloud clouds;
 	private Thread thread;
-
 	private MaBu maBu;
 	
 	private boolean isKeyPressed;
@@ -48,7 +47,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 		gameOverButtonImage = Resource.getResourceImage("data/gameover_text.png");
 		gameStartButtonImage = Resource.getResourceImage("data/gamestart_text.png");
 		bgGameImage = Resource.getResourceImage("data/bg1.png");
-		gameManager = new GameManager(mainCharacter);
+		enemyManager = new GameManager(mainCharacter);
 		clouds = new Cloud(GameWindow.SCREEN_WIDTH, mainCharacter);
 
 	}
@@ -64,21 +63,12 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			clouds.update();
 			// land.update();
 			mainCharacter.update();
-			gameManager.update();
-			if (gameManager.isCollision()) {
+			enemyManager.update();
+			if (enemyManager.isCollision()) {
 				mainCharacter.playDeadSound();
 				gameState = GAME_OVER_STATE;
 				mainCharacter.dead(true);
 			}
-			if(mainCharacter.state == 3)gameManager.MaBu_isCollision();
-//			if (gameManager.MaBu_gokuBullet()) {
-//				maBu.be_attacked += 1;
-//				System.out.print(maBu.be_attacked);
-//				if (maBu.be_attacked > 3) {
-//					maBu.dead(true);
-//					maBu.be_attacked = 0;
-//				}
-//			}
 			
 		}
 	}
@@ -104,15 +94,19 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			clouds.draw(g);
 			// land.draw(g);
 
+
 			ArrayList bullets = MainCharacter.getBullets();
 			for(int w = 0; w < bullets.size(); w++){
 
-				Bullet m = (Bullet) bullets.get(w);
+				GokuBullet m = (GokuBullet) bullets.get(w);
 				g2d.drawImage(m.getImage(), (int)m.getX(),(int)m.getY(),null);
 			}
 
-			gameManager.draw(g);
+			enemyManager.draw(g);
 			mainCharacter.draw(g);
+
+
+
 
 			g.setColor(Color.RED);
 			g.drawString("SCORE: " + mainCharacter.score, 680, 20);
@@ -156,6 +150,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 			try {
 				Thread.sleep(msSleep);
 			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			lastTime = System.nanoTime();
@@ -179,7 +174,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 
 				break;
 			case GAME_PLAYING_STATE:
-				if (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_UP) {
+				while (e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_UP) {
 					mainCharacter.jump();
 				}
 				if (e.getKeyCode() == KeyEvent.VK_DOWN) {
@@ -187,16 +182,6 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				}
 				if (e.getKeyCode() == KeyEvent.VK_A) {
 					mainCharacter.attack(true);
-					//ArrayList bullets = MainCharacter.getBullets();
-//					for(int w = 0; w < bullets.size(); w++){
-//
-//						Bullet m = (Bullet) bullets.get(w);
-//						if (m.getVisible() == true){
-//							m.move();
-//						}else{
-//							bullets.remove(w);
-//						}
-//					}
 					mainCharacter.fire();
 				}
 				break;
@@ -227,7 +212,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 	}
 
 	public void resetGame() {
-		gameManager.reset();
+		enemyManager.reset();
 		mainCharacter.dead(false);
 		mainCharacter.reset();
 

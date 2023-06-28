@@ -8,11 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 import gameinterface.Object;
-import gameobjects.Bullet;
-import gameobjects.MaBu;
-import gameobjects.MabuBullet;
-import gameobjects.MainCharacter;
-import gameobjects.TreeAndStone;
+import gameobjects.*;
 import gameinterface.GameSettings;
 import util.Resource;
 
@@ -20,17 +16,17 @@ public class GameManager extends GameSettings{
 	private MainCharacter mainCharacter;
 	private MaBu mabu;
 	
-	private Bullet bullet;
-	
 	private BufferedImage tree;
 	private BufferedImage stone;
 	
 	private List<Object> obstacles;
 	private List<MabuBullet> mabuBullet;
+	private List<GokuBullet> gokuBullet;
 	
 	private Random rand;
 	
 	private long mabuPreviousShoot; // milisecond
+
 
 	public GameManager(MainCharacter mainCharacter) {
 		rand = new Random();
@@ -44,6 +40,7 @@ public class GameManager extends GameSettings{
 		obstacles.add(createObstacle());
 		
 		mabuBullet = new ArrayList<>();
+		gokuBullet = new ArrayList<>();
 		mabuPreviousShoot = System.currentTimeMillis();
 	}
 
@@ -57,6 +54,10 @@ public class GameManager extends GameSettings{
 		if ((System.currentTimeMillis() - mabuPreviousShoot) >= mabuShootingPeriod) {
 			mabuFire();
 			mabuPreviousShoot = System.currentTimeMillis();
+		}
+		if (this.isCollision1()) {
+			mabu.be_attacked++;
+			System.out.println(mabu.be_attacked);
 		}
 	}
 	
@@ -89,6 +90,7 @@ public class GameManager extends GameSettings{
 			bullet.draw(g);
 		}
 		
+		
 		Object obstacle = obstacles.get(0);
 		if (obstacle.isOutOfScreen()) {
 			mainCharacter.upScore();
@@ -112,18 +114,22 @@ public class GameManager extends GameSettings{
 				return true;
 			}
 		}
-		return false;
-	}
-
-	public boolean MaBu_isCollision() {
-		if (mabu.getBound().intersects(bullet.getBound())) {
-			System.out.print("yes");
-			return true;
+		for (MabuBullet bullet : mabuBullet) {
+			if (mainCharacter.getBound().intersects(bullet.getBound())) {
+				return true;
+			}
 		}
 		return false;
 	}
-	
-	
+	public boolean isCollision1() {
+		for (GokuBullet bullet : gokuBullet) {
+			if (mabu.getBound().intersects(bullet.getBound())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public void reset() {
 		obstacles.clear();
 		obstacles.add(createObstacle());
