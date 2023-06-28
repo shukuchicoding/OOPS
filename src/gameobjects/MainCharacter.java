@@ -47,6 +47,8 @@ public class MainCharacter {
 
 	static ArrayList bullets;
 
+	private boolean attackCheck = false;
+
 	public MainCharacter() {
 		posX = 50;
 		posY = LAND_POSY;
@@ -101,7 +103,12 @@ public class MainCharacter {
 	public void draw(Graphics g) {
 		switch (state) {
 		case NORMAL_RUN:
-			g.drawImage(normalRunAnim.getFrame(), (int) posX, (int) posY, null);
+			if (getAttackCheck() == false){
+				g.drawImage(normalRunAnim.getFrame(), (int) posX, (int) posY, null);
+			}else {
+				g.drawImage(Resource.getResourceImage("data/Goku_attack_2.png"), (int) posX, (int) posY, null);
+				attackCheck = false;
+			}
 			break;
 		case JUMPING:
 			g.drawImage(jumping, (int) posX, (int) posY, null);
@@ -116,7 +123,8 @@ public class MainCharacter {
 			g.drawImage(startImage, (int) posX, (int) posY - 5, null);
 			break;
 		case ATTACK:
-			g.drawImage(attackAnim.getFrame(), (int) posX, (int) posY, null);
+			g.drawImage(Resource.getResourceImage("data/Goku_attack_2.png"), (int) posX, (int) posY, null);
+			//g.drawImage(attackAnim.getFrame(), (int) posX, (int) posY, null);
 			break;
 		}
 	}
@@ -127,8 +135,8 @@ public class MainCharacter {
 		attackAnim.updateFrame();
 		ArrayList bullets = MainCharacter.getBullets();
 		for(int w = 0; w < bullets.size(); w++){
-
-			Bullet m = (Bullet) bullets.get(w);
+			attackCheck = true;
+			GokuBullet m = (GokuBullet) bullets.get(w);
 			if (m.getVisible() == true){
 				m.move();
 			}else{
@@ -177,6 +185,7 @@ public class MainCharacter {
 //		}
 		if (isAttack) {
 			state = ATTACK;
+			attackCheck = true;
 		}
 //		else {
 //			state = NORMAL_RUN;
@@ -229,11 +238,15 @@ public class MainCharacter {
 	}
 
 	public void fire(){
-		Bullet z = new Bullet((int) posX, (int) posY);
+		GokuBullet z = new GokuBullet((int) posX, (int) posY);
 		bullets.add(z);
 	}
 
 	public static ArrayList getBullets(){
 		return bullets;
+	}
+
+	public boolean getAttackCheck(){
+		return attackCheck;
 	}
 }

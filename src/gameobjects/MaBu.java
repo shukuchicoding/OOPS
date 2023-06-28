@@ -27,7 +27,7 @@ public class MaBu implements Object {
 
 	@Override
 	public void update() {
-		if (posY <= 18 || posY >= 40) {
+		if (posY <= 10 || posY >= 50) {
 			directionY *= -1;
 		}
 		posY += directionY * speedY;

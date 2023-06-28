@@ -1,8 +1,6 @@
 
 J
 src/gameui/GameWindow.java,d\9\d9ca3d342c980a751b8e6ed991fe399de6143c79
-Q
-!src/gameobjects/EnemyManager.java,8\c\8ca73a36f5575347e0467d43915f6b836a512a65
 J
 src/gameobjects/Cloud.java,c\a\ca163f0db478ed0b17f06ad6fedf66f9f875cac2
 ‹

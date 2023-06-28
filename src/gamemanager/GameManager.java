@@ -8,10 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 import gameinterface.Object;
-import gameobjects.MaBu;
-import gameobjects.MabuBullet;
-import gameobjects.MainCharacter;
-import gameobjects.TreeAndStone;
+import gameobjects.*;
 import gameinterface.GameSettings;
 import util.Resource;
 
@@ -28,6 +25,7 @@ public class GameManager extends GameSettings{
 	private Random rand;
 	
 	private long mabuPreviousShoot; // milisecond
+
 
 	public GameManager(MainCharacter mainCharacter) {
 		rand = new Random();

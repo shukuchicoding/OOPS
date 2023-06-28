@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import gamemanager.GameManager;
 import gameobjects.*;
 import util.Resource;
 
@@ -20,7 +21,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 
 	private Land land;
 	private MainCharacter mainCharacter;
-	private EnemyManager enemyManager;
+	private GameManager enemyManager;
 	private Cloud clouds;
 	private Thread thread;
 	private MaBu maBu;
@@ -46,7 +47,7 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 		gameOverButtonImage = Resource.getResourceImage("data/gameover_text.png");
 		gameStartButtonImage = Resource.getResourceImage("data/gamestart_text.png");
 		bgGameImage = Resource.getResourceImage("data/bg1.png");
-		enemyManager = new EnemyManager(mainCharacter);
+		enemyManager = new GameManager(mainCharacter);
 		clouds = new Cloud(GameWindow.SCREEN_WIDTH, mainCharacter);
 
 	}
@@ -181,16 +182,6 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 				}
 				if (e.getKeyCode() == KeyEvent.VK_A) {
 					mainCharacter.attack(true);
-					//ArrayList bullets = MainCharacter.getBullets();
-//					for(int w = 0; w < bullets.size(); w++){
-//
-//						Bullet m = (Bullet) bullets.get(w);
-//						if (m.getVisible() == true){
-//							m.move();
-//						}else{
-//							bullets.remove(w);
-//						}
-//					}
 					mainCharacter.fire();
 				}
 				break;
