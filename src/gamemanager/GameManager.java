@@ -112,6 +112,20 @@ public class GameManager extends GameSettings{
 				return true;
 			}
 		}
+
+		return false;
+	}
+
+	public boolean isCollision2() {
+		ArrayList bullets = MainCharacter.getBullets();
+		for (Object o : obstacles) {
+			for (int w = 0; w < bullets.size(); w++) {
+				GokuBullet m = (GokuBullet) bullets.get(w);
+				if (m.getBound().intersects(o.getBound())) {
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 

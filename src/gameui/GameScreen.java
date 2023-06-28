@@ -100,7 +100,11 @@ public class GameScreen extends JPanel implements Runnable, KeyListener, MouseLi
 
 				GokuBullet m = (GokuBullet) bullets.get(w);
 				g2d.drawImage(m.getImage(), m.getX(),m.getY(),null);
+				if (enemyManager.isCollision2()) {
+					bullets.remove(w);
+				}
 			}
+
 
 			enemyManager.draw(g);
 			mainCharacter.draw(g);

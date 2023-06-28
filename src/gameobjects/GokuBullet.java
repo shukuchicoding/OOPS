@@ -1,8 +1,10 @@
 package gameobjects;
 
+import gameinterface.Object;
 import util.Resource;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class GokuBullet {
@@ -10,6 +12,8 @@ public class GokuBullet {
     BufferedImage image;
 
     boolean visible;
+
+    private Rectangle rectBound;
 
     public GokuBullet(int startX, int startY){
         x = startX;
@@ -40,5 +44,14 @@ public class GokuBullet {
 
     public BufferedImage getImage(){
         return image;
+    }
+
+    public Rectangle getBound() {
+        rectBound = new Rectangle();
+        rectBound.x = (int) x + 5;
+        rectBound.y = (int) y + 5;
+        rectBound.width = image.getWidth() - 10;
+        rectBound.height = image.getHeight() - 10;
+        return rectBound;
     }
 }
